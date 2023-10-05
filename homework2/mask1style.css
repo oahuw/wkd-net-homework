@@ -1,0 +1,17 @@
+#capcha {
+  background-color: rgb(197, 38, 163);
+}
+#headline {
+  color: blue;
+}
+#test-image-preview {
+  display: inline-block;
+  border: 1px solid rgb(12, 11, 11);
+  width: 200px;
+  height: 200px;
+  /* 设置空白框尺寸颜色 */
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 90px;
+  /* 添加左边距控制右对齐 */
+}

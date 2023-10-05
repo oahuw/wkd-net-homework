@@ -1,0 +1,163 @@
+:root {
+  --primary-color: #31c27c;
+}
+/* :root 这个 CSS 伪类匹配文档树的根元素（即html页面）。对于 HTML 来说，:root 表示 <html> 元素，
+除了优先级更高之外，与 html 选择器相同。同时--primary-color属性定义了html页面的主题颜色*/
+body {
+  margin: 0;
+  /* 设置body及子代元素的外边距为零 */
+  background: #f5f5f5;
+  /* 背景色 */
+  font-family: Microsoft Yahei;
+  font-size: 14px;
+  /* 字体及尺寸*/
+  /* min-width: 1000px; */
+}
+a {
+  text-decoration: none;
+  color: #000;
+}/* 定义了链接的样式，包括去除下划线并设置文字颜色为黑色 */
+header {
+  height: 90px;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+/* 定义了页眉的样式，包括高度、背景色以及子元素的排列方式。 */
+.header-inner, main {
+  /* width: 1200px; */
+  padding: 20px;
+  margin: auto;
+}
+/* 选择“.header-inner”类 和<main>标签 并设置它们的内边距和居中对齐。*/
+.tag-list {
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+.tag-item {
+  display: inline-block;
+  padding: 0 8px;
+  margin-right: 24px;
+  line-height: 26px;
+  color: #000;
+  text-decoration: none;
+}
+/* 定义了.tag-list 和 .tag-item 类的样式，包括间距、字体颜色和行高。
+text-decoration:none指定无文本修饰，父辈属性继承到子代上*/
+.tag-active {
+  background: var(--primary-color);
+  color: white;
+}
+.tag-item:not(.tag-active):hover {
+  color: var(--primary-color);
+}
+/* 定义了选定标签和鼠标悬停在非选定标签上的样式。 */
+.nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 定义文本溢出处理方式，当文本内容过长时，以省略号的形式显示。 */
+.playlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  gap: 45px 15px;
+  margin-bottom: 45px;
+}
+/* 定义了播放列表的样式，使用了CSS Grid来排列元素，并设置了间距。 */
+.cover-wrap {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+/* 定义了封面图像的包装器样式，包括对鼠标悬停的交互效果。 */
+.cover-img {
+  width: 100%;
+  transition: all 0.75s;
+}
+.cover-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.cover-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -35px;
+  margin-top: -35px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.5s;
+}
+/* .cover-img、.cover-mask 和 .cover-play 规则
+分别定义了封面图像、遮罩和播放按钮的样式，包括动画效果。 */
+.cover-wrap:hover .cover-mask {
+  opacity: 0.2;
+}
+.cover-wrap:hover .cover-play {
+  opacity: 1;
+  transform: scale(1);
+}
+.cover-wrap:hover .cover-img {
+  transform: scale(1.07);
+}
+.album-title:hover {
+  color: var(--primary-color);
+}
+/*定义当鼠标悬停在类名为"album-title"的元素上时，
+文本颜色将变为--primary-color定义的颜色值 */
+.album-author {
+  color: #999;
+  line-height: 1.6;
+}
+/* 选择album-author类的元素，
+line-height：行高为文本高度的1.6倍，用于控制文本行与行之间的间距。 */
+.album-author:hover {
+  color: var(--primary-color);
+}
+/*在鼠标悬停在拥有.album-author类的元素上时，
+文本颜色将变为--primary-color定义的颜色值   */
+.album-time {
+  color: #999;
+}
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 设置page类的样式，display：将元素设置为flex布局，使其内部元素可以灵活排列。
+align-items：垂直居中对齐元素内部的内容。
+justify-content：水平居中对齐元素内部的内容。 */
+.page-item {
+  display: inline-block;
+  color: #a2a2a2;
+  line-height: 50px;
+  padding: 0 20px;
+  margin: 10px;
+  font-size: 16px;
+}
+/* 设置page-item的样式，其中displa属性将元素设置为inline-block，使它们在同一行内显示。 */
+.page-current, .page-item:not(.page-more):hover {
+  background: var(--primary-color);
+  color: white;
+}
+/* 选择拥有.page-current类的元素以及不拥有.page-more类的.page-item元素，
+并在鼠标悬停时，背景色变为一个自定义颜色(--primary-color)。文本颜色变为白色*/
+footer {
+  margin-top: 60px;
+  background: #333;
+  height: 200px;
+}
+
+

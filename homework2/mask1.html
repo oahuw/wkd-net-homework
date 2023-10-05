@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="mask1style.css" />
+  </head>
+  <body>
+    <form action="data.html" method="post">
+      <p id="headline">欢迎注册会员</p>
+      <div class="帐密">
+        手机号码：
+        <input
+          type="text"
+          name="phonenumber"
+          placeholder="11位手机号"
+          title="手机号码"
+        />
+        <span style="color: red">必填</span>
+        <br />
+        创建密码：
+        <input
+          type="password"
+          name="password"
+          placeholder="8位密码"
+          title="密码"
+        />
+        <span style="color: red">必填</span>
+        <br />
+        注册邮箱：
+        <input
+          type="text"
+          name="email"
+          placeholder="例如:wust@sina.com"
+          title="邮箱账号"
+        />
+        <span style="color: red">必填</span>
+        <br />
+      </div>
+      <div class="formgroup">
+        <label for="vcode">验证码：</label>
+        <input type="text" class="form_control" id="vcode" name="vcode" />
+        <span id="capcha"></span>
+        <img
+          src="image/a.jpg"
+          id="change_capcha"
+          alt=""
+          width="25"
+          style="vertical-align: middle"
+        />
+      </div>
+      <div class="个人信息">
+        <div class="性别">
+          <span style="padding-left: 32px"></span> 性别：
+          <!-- span标签设置空格长度控制文字右对齐上一行文字 -->
+          <label>
+            <input
+              type="radio"
+              name="sex"
+              value="male"
+              checked="checked"
+            />男&nbsp
+          </label>
+          <label> <input type="radio" name="sex" value="female" />女 </label>
+        </div>
+        <span style="padding-left: 32px"></span> 生日：
+        <input
+          type="text"
+          name="birthday"
+          placeholder="&nbsp&nbsp年&nbsp/月&nbsp/日"
+          title="生日"
+        />
+        <br />
+        <span style="padding-left: 32px"></span> 年龄：
+        <input type="text" name="age" title="年龄" />
+        <br />
+        <div class="籍贯">
+          <span style="padding-left: 32px"></span> 籍贯：
+          <select name="HOMETOWN">
+            <option value="0">湖北省</option>
+            <option value="1">湖南省</option>
+            <option value="2">江西省</option>
+            <option value="4">其他省</option>
+          </select>
+          <select name="hometown">
+            <option value="0">武汉</option>
+            <option value="1">随州</option>
+            <option value="2">孝感</option>
+            <option value="4">其他地方</option>
+          </select>
+        </div>
+        个人学历：
+        <select name="degree">
+          <option value="0">本科</option>
+          <option value="1">专科</option>
+          <option value="2">硕士</option>
+          <option value="3">其他</option>
+        </select>
+      </div>
+      <div class="月薪">
+        <span style="padding-left: 32px"></span>月薪：
+        <input
+          type="range"
+          id="income"
+          name="income"
+          min="0"
+          max="20000"
+          step="100"
+          value="6000"
+        />
+        <span id="fun"></span>
+      </div>
+      <div class="个人爱好">
+        个人爱好：
+        <label> <input type="checkbox" name="like" value="sing" />唱歌 </label>
+        <label> <input type="checkbox" name="like" value="run" />跑步 </label>
+        <label> <input type="checkbox" name="like" value="swim" />游泳 </label>
+      </div>
+      <div class="个人照片">
+        <form method="post" action="#" enctype="multipart/form-data">
+          <p>
+            <span>个人照片:</span>
+            <input type="file" id="test-image-file" name="test" />
+          </p>
+          <div id="test-image-preview"></div>
+        </form>
+      </div>
+      <table class="个人简介">
+        <tr>
+          <td>个人简介：</td>
+          <td>
+            <textarea
+              name="introdce"
+              id="50"
+              cols="30"
+              rows="10"
+              style="display: inline"
+            ></textarea>
+          </td>
+        </tr>
+      </table>
+      <!-- 使用table块使文字和右输入框对齐 -->
+      <div class="footer">
+        <span style="padding-left: 84px"></span>
+        <input type="submit" value="提交" />
+        <input type="reset" value="重填" />
+      </div>
+    </form>
+    <script>
+      var fun = document.getElementById("fun");
+      window.onload = function () {
+        fun.innerHTML = document.getElementById("income").value;
+      };
+      document.getElementById("income").onchange = function () {
+        fun.innerHTML = this.value;
+      };
+      var codeStr =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      var capcha = document.getElementById("capcha");
+      var change_capcha = document.getElementById("change_capcha");
+      // 用来生成随机整数
+      function getRandom(n, m) {
+        // param: (Number, Number)
+        n = Number(n);
+        m = Number(m);
+        // 确保 m 始终大于 n
+        if (n > m) {
+          var temp = n;
+          n = m;
+          m = temp;
+        }
+        // 下有详细说明
+        return Math.floor(Math.random() * (m - n) + n);
+      }
+      // 将随机生成的整数下标对应的字母放入span中
+      function getCode() {
+        var str = "";
+        // 验证码有几位就循环几次
+        for (var i = 0; i < 4; i++) {
+          var ran = getRandom(0, 62);
+          str += codeStr.charAt(ran);
+        }
+        capcha.innerHTML = str;
+      }
+      getCode(); // 调用函数，页面刷新也会刷新验证码
+
+      // 点击刷新验证码
+      capcha.onclick = function () {
+        getCode();
+      };
+      change_capcha.onclick = function () {
+        getCode();
+      };
+      var fileInput = document.getElementById("test-image-file");
+      var info = document.getElementById("test-file-info");
+      var preview = document.getElementById("test-image-preview");
+      fileInput.addEventListener("change", function () {
+        // 监听change事件
+        preview.style.backgroundImage = ""; // 清除背景图片
+        if (!fileInput.value) {
+          info.innerHTML = "没有选择文件";
+          return;
+        }
+        var file = fileInput.files[0]; // 获取File引用
+        // 获取File信息:
+        info.innerHTML =
+          "文件: " +
+          file.name +
+          "<br>" +
+          "大小: " +
+          file.size +
+          "<br>" +
+          "修改: " +
+          file.lastModifiedDate;
+        if (
+          file.type !== "image/jpeg" &&
+          file.type !== "image/png" &&
+          file.type !== "image/gif"
+        ) {
+          alert("不是有效的图片文件!");
+          return;
+        }
+        var reader = new FileReader(); // 读取文件
+        reader.onload = function (e) {
+          // 发起一个异步操作来读取文件内容
+          var data = e.target.result; // data串形如： 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+          preview.style.backgroundImage = "url(" + data + ")";
+        };
+        reader.readAsDataURL(file); // 以DataURL的形式读取文件
+      });
+    </script>
+    <!-- js代码获取区间域值并显示参照课件代码所写 -->
+  </body>
+</html>
