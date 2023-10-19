@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Countdown to NCEE</title>
+    <link rel="stylesheet" href="problem2css.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2><span>Countdown to</span> 2023高考</h2>
+      <div class="countdown">
+        <div id="day">NA</div>
+        <div id="hour">NA</div>
+        <div id="minute">NA</div>
+        <div id="second">NA</div>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="text/javascript">
+  function getEndTime(myYear) {
+    var myEndTime = new Date("" + myYear + "/06/07 00:00:00"); 
+    // 创建了一个新的 Date 对象，将 myYear 和字符串 '06/07 00:00:00'
+    //  连接起来传递给 Date 构造函数。
+    // 这样就创建了一个结束日期的日期对象。
+    return myEndTime;
+  }
+  // 定义了一个JavaScript函数，用于获取指定年份的结束时间
+
+  function countDown() {
+    var mydate = new Date();
+    // 创建了一个新的 Date 对象 mydate，用于获取当前日期和时间
+    var year = "2023";
+    var EndTime = getEndTime(year);
+    // 调用函数获取倒计时结束时间
+    var NowTime = new Date();
+    if (EndTime.getTime() - NowTime.getTime() < 0) {
+      year = mydate.getFullYear() + 1;
+      EndTime = getEndTime(year);
+    //   判断倒计时的结束时间是否早于当前时间。如果是，
+    // 将年份加1，并重新获取新的目标倒计时的结束时间。
+    }
+    var t = EndTime.getTime() - NowTime.getTime();
+    //  计算了目标倒计时的剩余时间
+
+    var d = Math.floor(t / 1000 / 60 / 60 / 24);
+    var h = Math.floor((t / 1000 / 60 / 60) % 24);
+    var m = Math.floor((t / 1000 / 60) % 60);
+    var s = Math.floor((t / 1000) % 60);
+    // 分别获取剩余时间的天，小时，分钟，秒
+
+    document.getElementById("day").innerText = d;
+    document.getElementById("hour").innerText = h;
+    document.getElementById("minute").innerText = m;
+    document.getElementById("second").innerText = s;
+    // 通过id查询分别赋值html元素为剩余时间的天，小时，分钟，秒
+  }
+  setInterval(countDown, 1000);
+  // 使用 setInterval 函数每隔一秒调用 countDown 函数，从而实现倒计时的更新。
+</script>

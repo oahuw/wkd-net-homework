@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+/* 这行代码导入了一个来自Google Fonts的外部字体样式表，其中使用了Poppins字体的不同字重。 */
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+/* 这段代码设置了通用的样式规则，将所有元素的外边距和内边距都设为0，并将字体设置为Poppins字体。 */
+
+body
+{
+    background: #000 url(bg.jpg);
+    background-attachment: fixed;
+    background-blend-mode: hard-light;
+}
+/* 这段代码设置了body元素的样式，将背景颜色设置为黑色，并使用bg.jpg作为背景图片。
+background-attachment: fixed;将背景图片固定在视口中，background-blend-mode: hard-light;设置背景混合模式为hard-light。 */
+.container{
+    position: absolute;
+    top: 80px;
+    left: 100px;
+    right: 100px;
+    bottom: 80px;
+    background: url(bg.jpg);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 50px 50px rgba(0,0,0,0.5),
+                0 0 0 100px rgba(0,0,0,.1);
+}
+/* 这段代码设置了一个类名为 "container" 的元素的样式。它使用绝对定位，并设置了上、左、右和下的偏移量。背景图片也是使用bg.jpg，并且也是固定在视口中。
+display: flex;将该元素设置为flex布局，justify-content: center;和align-items: center;将内容在水平和垂直方向上居中对齐。
+flex-direction: column;将子元素垂直排列。box-shadow属性添加了一个阴影效果。 */
+.container h2 {
+    text-align: center;
+    font-size: 10em;
+    line-height: 0.7em;
+    color: #333;
+    margin-top: -80px;
+}
+/* 这段代码设置了类名为 "container" 的元素内的h2标题的样式。text-align: center;将文本居中对齐，font-size: 10em;设置字体大小为10倍em单位，line-height: 0.7em;
+设置行高为0.7倍em单位，color: #333;设置字体颜色为深灰色，margin-top: -80px;将标题向上偏移80像素。 */
+.container h2 span{
+    display: block;
+    font-weight: 300;
+    letter-spacing: 6px;
+    font-size: 0.2em;
+}
+/* 这段代码设置了类名为 "container" 的元素内的h2标题中的span元素的样式。display: block;将span元素设置为块级元素，
+font-weight: 300;设置字体的粗细为300，letter-spacing: 6px;
+设置字母间距为6像素，font-size: 0.2em;设置字体大小为0.2倍em单位。 */
+.countdown{
+    display: flex;
+    margin-top: 50px;
+}
+/* 这段代码设置了类名为 "countdown" 的元素的样式。它使用flex布局，并在垂直方向上与上方的元素有50像素的间距。 */
+.countdown div{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background: #333;
+    color: #fff;
+    margin: 0 15px;
+    font-size: 3em;
+    font-weight: 500;
+}
+/* 这段代码设置了类名为 "countdown" 的元素内的div元素的样式。position: relative;将div元素设置为相对定位，
+width: 100px;和height: 100px;设置宽度和高度为100像素，line-height: 100px;设置行高为100像素，text-align: center;将文本居中对齐，background: #333;
+设置背景颜色为深灰色，color: #fff;设置字体颜色为白色，margin: 0 15px;
+设置左右边距为15像素，font-size: 3em;设置字体大小为3倍em单位，font-weight: 500;设置字体的粗细为500。 */
+.countdown div:before{
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: #ff0;
+    color: #333;
+    font-size: 0.35em;
+    line-height: 35px;
+    font-weight: 300;
+}
+/* 这段代码设置了类名为 "countdown" 的元素内的div元素前的伪元素的样式。它使用绝对定位，并位于div元素的底部。content: '';
+设置伪元素的内容为空，bottom: -30px;将伪元素向下偏移30像素，left: 0;将伪元素的左边距设置为0，width: 100%;将伪元素的宽度设置为100%，height: 35px;
+设置伪元素的高度为35像素，background: #ff0;设置背景颜色为黄色，color: #333;
+设置字体颜色为深灰色，font-size: 0.35em;设置字体大小为0.35倍em单位，line-height: 35px;设置行高为35像素，font-weight: 300;设置字体的粗细为300 */
+.container #day:before{
+    content: 'Days';
+}
+.container #hour:before{
+    content: 'Hours';
+}
+.container #minute:before{
+    content: 'Minutes';
+}
+.container #second:before{
+    content: 'Seconds';
+}
+/* 这段代码设置了类名为 "container" 的元素内的ID为 "day"、"hour"、"minute"和"second" 的元素前的伪元素的样式。
+它们分别设置了伪元素的内容为 "Days"、"Hours"、"Minutes"和"Seconds"。 */
